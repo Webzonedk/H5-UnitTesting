@@ -38,7 +38,7 @@ namespace NetworkUtility.Test.PingTests
 
             //Assert - Did it return what we expected?
             result.Should().Be(expected);
-            result.Should().BeGreaterThanOrEqualTo(4);
+            result.Should().BeOneOf(new[] { 2, 4 });
             result.Should().NotBe(0);
             result.Should().NotBeInRange(-10000, 0);
         }
