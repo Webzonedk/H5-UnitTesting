@@ -1,4 +1,6 @@
-﻿namespace NetworkUtility.Ping
+﻿using System.Net.NetworkInformation;
+
+namespace NetworkUtility.Ping
 {
     public class NetworkService
     {
@@ -15,5 +17,44 @@
         {
             return a + b;
         }
+
+        public DateTime LastPingDate()
+        {
+            return DateTime.Now;
+        }
+
+
+        public PingOptions GetPingOptions()
+        {
+            return new PingOptions()
+            {
+                DontFragment = true,
+                Ttl = 1
+            };
+        }
+
+        public IEnumerable<PingOptions> GetPingOptionsList()
+        {
+            IEnumerable<PingOptions> pingOptions = new[]
+            {
+                new PingOptions()
+                {
+                    DontFragment = true,
+                    Ttl = 1
+                },
+                new PingOptions()
+                {
+                    DontFragment = true,
+                    Ttl = 2
+                },
+                new PingOptions()
+                {
+                    DontFragment = true,
+                    Ttl = 3
+                },
+            };
+            return pingOptions;
+        }
     }
 }
+
